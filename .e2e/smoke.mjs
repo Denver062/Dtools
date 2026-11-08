@@ -20,15 +20,15 @@ await page.goto(BASE, { waitUntil: 'networkidle' })
 await page.screenshot({ path: path.join(OUT, 'home.png'), fullPage: true })
 console.log('title:', await page.title())
 console.log('h1:', await page.locator('h1').first().innerText())
-console.log('links:', await page.locator('a[href^="#/"]').allInnerTexts())
+console.log('links:', await page.locator('a[href^="/"]').allInnerTexts())
 
 for (const route of [
-  '#/compress',
-  '#/extract',
-  '#/pdf/merge',
-  '#/pdf/split',
-  '#/pdf/compress',
-  '#/convert',
+  '/compress/',
+  '/extract/',
+  '/pdf/merge/',
+  '/pdf/split/',
+  '/pdf/compress/',
+  '/convert/',
 ]) {
   await page.goto(BASE + route, { waitUntil: 'networkidle' })
   const h1 = await page.locator('h1').first().innerText()

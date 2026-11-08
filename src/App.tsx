@@ -4,6 +4,7 @@ import {
   useEffect,
   useState,
   type ComponentType,
+  type MouseEvent,
 } from 'react'
 import { BrandMark } from './components/BrandMark'
 import { Icon, type IconName } from './components/Icons'
@@ -59,10 +60,21 @@ const PAGES: Record<string, ComponentType> = {
 const ALL_ITEMS = NAV.flatMap((group) => group.items)
 
 function readPath(): string {
-  const raw = window.location.hash.replace(/^#/, '')
-  if (!raw) return '/'
-  const path = raw.split('?')[0]
-  return path.startsWith('/') ? path.replace(/\/+$/, '') || '/' : `/${path}`
+  const legacyHashPath =
+    window.location.hash.startsWith('#/')
+      ? window.location.hash.slice(1)
+      : window.location.pathname
+  return legacyHashPath.replace(/\/+$/, '') || '/'
+}
+
+const PAGE_DESCRIPTIONS: Record<string, string> = {
+  '/': '압축, 압축 풀기, PDF 합치기·분할·압축, 파일 변환까지. 파일이 서버로 전송되지 않는 100% 로컬 파일 도구.',
+  '/compress': '파일과 폴더를 브라우저에서 ZIP 또는 7Z로 안전하게 압축합니다.',
+  '/extract': 'ZIP, 7Z, TAR, GZ 등 다양한 압축 파일을 브라우저에서 풉니다.',
+  '/pdf/merge': '여러 PDF 파일을 순서대로 하나의 PDF로 합칩니다.',
+  '/pdf/split': 'PDF 페이지 범위를 지정해 여러 파일로 나눕니다.',
+  '/pdf/compress': 'PDF 파일을 브라우저에서 무손실 또는 이미지 기반으로 압축합니다.',
+  '/convert': '이미지, PDF, CSV 파일을 브라우저에서 다양한 형식으로 변환합니다.',
 }
 
 function initialTheme(): Theme {
@@ -94,7 +106,7 @@ function Navigation({
                 <a
                   key={item.path}
                   className={`nav-item${active ? ' is-active' : ''}`}
-                  href={`#${item.path}`}
+                  href={`${item.path}/`}
                   aria-current={active ? 'page' : undefined}
                   onClick={onNavigate}
                 >
@@ -155,7 +167,7 @@ function NotFoundPage() {
           </div>
         </div>
         <div className="row" style={{ justifyContent: 'center' }}>
-          <a className="btn btn-primary" href="#/">
+          <a className="btn btn-primary" href="/">
             <Icon name="arrow-right" />
             홈으로 돌아가기
           </a>
@@ -171,9 +183,13 @@ export default function App() {
   const [drawerOpen, setDrawerOpen] = useState(false)
 
   useEffect(() => {
-    const onHashChange = () => setPath(readPath())
-    window.addEventListener('hashchange', onHashChange)
-    return () => window.removeEventListener('hashchange', onHashChange)
+    const onLocationChange = () => setPath(readPath())
+    window.addEventListener('popstate', onLocationChange)
+    window.addEventListener('hashchange', onLocationChange)
+    return () => {
+      window.removeEventListener('popstate', onLocationChange)
+      window.removeEventListener('hashchange', onLocationChange)
+    }
   }, [])
 
   useEffect(() => {
@@ -191,10 +207,17 @@ export default function App() {
     setDrawerOpen(false)
     window.scrollTo(0, 0)
     const item = ALL_ITEMS.find((entry) => entry.path === path)
-    document.title =
+    const title =
       path === '/'
         ? 'Dtools — 브라우저에서 끝나는 파일 도구'
         : `${item?.label ?? '페이지를 찾을 수 없음'} — Dtools`
+    document.title = title
+    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]')
+    if (description) description.content = PAGE_DESCRIPTIONS[path] ?? PAGE_DESCRIPTIONS['/']
+    const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+    if (canonical) {
+      canonical.href = new URL(path === '/' ? '/' : `${path}/`, window.location.origin).href
+    }
   }, [path])
 
   useEffect(() => {
@@ -212,11 +235,35 @@ export default function App() {
 
   const Page = PAGES[path]
   const toggleTheme = () => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))
+  const handleAppClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return
+    }
+    const target = event.target
+    if (!(target instanceof Element)) return
+    const link = target.closest<HTMLAnchorElement>('a[href]')
+    if (!link || link.target || link.hasAttribute('download')) return
+
+    const url = new URL(link.href, window.location.href)
+    const nextPath = url.pathname.replace(/\/+$/, '') || '/'
+    if (url.origin !== window.location.origin || !PAGES[nextPath]) return
+
+    event.preventDefault()
+    window.history.pushState(null, '', `${url.pathname}${url.search}`)
+    setPath(nextPath)
+  }
 
   return (
-    <div className="app">
+    <div className="app" onClick={handleAppClick}>
       <header className="topbar">
-        <a className="brand" href="#/">
+        <a className="brand" href="/">
           <BrandMark />
         </a>
 
@@ -260,10 +307,10 @@ export default function App() {
             <b>Dtools</b> · 파일은 브라우저를 떠나지 않습니다.
           </span>
           <div className="footer-links">
-            <a href="#/compress">압축</a>
-            <a href="#/extract">압축 풀기</a>
-            <a href="#/pdf/merge">PDF</a>
-            <a href="#/convert">변환</a>
+            <a href="/compress/">압축</a>
+            <a href="/extract/">압축 풀기</a>
+            <a href="/pdf/merge/">PDF</a>
+            <a href="/convert/">변환</a>
             <span>v1.0</span>
           </div>
         </footer>
@@ -271,7 +318,7 @@ export default function App() {
 
       <div className={`drawer${drawerOpen ? ' is-open' : ''}`} aria-hidden={!drawerOpen}>
         <div className="spread">
-          <a className="brand" href="#/" onClick={() => setDrawerOpen(false)}>
+          <a className="brand" href="/" onClick={() => setDrawerOpen(false)}>
             <BrandMark />
           </a>
           <button

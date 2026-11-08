@@ -101,7 +101,7 @@ scripts/          PDF.js 리소스 복사 스크립트
 - `7z-wasm` — 7Z 생성/해제, TAR/GZ 등 추가 형식
 - `pdf-lib` — PDF 병합/분할/무손실 재저장
 - `pdfjs-dist` + Canvas — PDF 렌더링, 이미지 기반 압축, PDF → 이미지
-- 해시 라우팅(`#/compress` 등), 도구 페이지 코드 분할
+- 경로 기반 라우팅(`/compress/` 등), 도구 페이지 코드 분할
 
 ## 배포
 
@@ -112,7 +112,8 @@ npm run build
 
 `dist/`를 정적 호스팅에 올리면 됩니다.
 
-- 해시 라우팅을 사용하므로 SPA rewrite 규칙이 필요하지 않습니다.
+- 빌드 시 도구별 정적 진입점과 `sitemap.xml`, `robots.txt`를 생성하므로 직접 URL 접속과 검색엔진 수집이 가능합니다.
+- 사이트맵 주소: `https://dtols.duckdns.org/sitemap.xml`
 - `.wasm`은 `application/wasm`, `.woff2`는 `font/woff2` MIME으로 제공하세요. 대부분의 정적 호스트가 기본 지원합니다.
 - `public/fonts/`와 `public/pdfjs/`가 `dist/`에 포함되어야 합니다. 빌드 시 자동으로 복사됩니다.
 - SharedArrayBuffer나 COOP/COEP 헤더는 필요하지 않습니다.

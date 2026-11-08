@@ -10,42 +10,42 @@ interface ToolCard {
 
 const TOOLS: ToolCard[] = [
   {
-    href: '#/compress',
+    href: '/compress/',
     icon: 'archive',
     name: '압축 만들기',
     desc: '파일과 폴더를 ZIP 또는 7Z로 묶고, AES-256 비밀번호를 걸 수 있습니다.',
     formats: ['ZIP', '7Z', 'AES-256'],
   },
   {
-    href: '#/extract',
+    href: '/extract/',
     icon: 'unarchive',
     name: '압축 풀기',
     desc: 'ZIP, 7Z는 물론 TAR, GZ, RAR까지. 한글 파일명 인코딩도 선택할 수 있습니다.',
     formats: ['ZIP', '7Z', 'RAR', 'TAR'],
   },
   {
-    href: '#/pdf/merge',
+    href: '/pdf/merge/',
     icon: 'merge',
     name: 'PDF 합치기',
     desc: '여러 PDF를 순서대로 하나로 합칩니다. 텍스트와 링크를 그대로 보존합니다.',
     formats: ['PDF', '페이지 순서'],
   },
   {
-    href: '#/pdf/split',
+    href: '/pdf/split/',
     icon: 'split',
     name: 'PDF 나누기',
     desc: '페이지 범위를 직접 지정하거나 N페이지마다 자동으로 나눕니다.',
     formats: ['PDF', '범위 지정'],
   },
   {
-    href: '#/pdf/compress',
+    href: '/pdf/compress/',
     icon: 'compress',
     name: 'PDF 압축',
     desc: '무손실 구조 정리부터 이미지 기반 강한 압축까지. 원본보다 커지면 원본을 유지합니다.',
     formats: ['PDF', '무손실', '이미지'],
   },
   {
-    href: '#/convert',
+    href: '/convert/',
     icon: 'convert',
     name: '파일 변환',
     desc: '이미지 변환과 PDF 만들기, PDF 텍스트 추출, CSV ↔ JSON 표 변환까지 한 곳에서 처리합니다.',
@@ -69,11 +69,11 @@ export default function HomePage() {
             있습니다.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary btn-lg" href="#/compress">
+            <a className="btn btn-primary btn-lg" href="/compress/">
               <Icon name="archive" />
               압축 만들기
             </a>
-            <a className="btn btn-ghost btn-lg" href="#/pdf/merge">
+            <a className="btn btn-ghost btn-lg" href="/pdf/merge/">
               PDF 합치기
               <Icon name="arrow-right" />
             </a>

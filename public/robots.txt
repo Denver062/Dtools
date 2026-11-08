@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dtols.duckdns.org/sitemap.xml

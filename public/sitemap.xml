@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://dtols.duckdns.org/</loc>
+  </url>
+  <url>
+    <loc>https://dtols.duckdns.org/compress/</loc>
+  </url>
+  <url>
+    <loc>https://dtols.duckdns.org/extract/</loc>
+  </url>
+  <url>
+    <loc>https://dtols.duckdns.org/pdf/merge/</loc>
+  </url>
+  <url>
+    <loc>https://dtols.duckdns.org/pdf/split/</loc>
+  </url>
+  <url>
+    <loc>https://dtols.duckdns.org/pdf/compress/</loc>
+  </url>
+  <url>
+    <loc>https://dtols.duckdns.org/convert/</loc>
+  </url>
+</urlset>
