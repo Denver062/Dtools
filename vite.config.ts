@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/Dtools/', // './' 대신 깃허브 레포지토리 이름을 앞뒤로 슬래시를 붙여 적어줍니다.
+  base: process.env.GITHUB_ACTIONS ? '/Dtools/' : '/',
   plugins: [react()],
   build: {
     target: 'es2022',
