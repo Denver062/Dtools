@@ -1,0 +1,75 @@
+{
+  "results": [
+    {
+      "name": "Settings modal opens, lists 5 modes without AVIF, closes with Escape",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Convert PNG+JPG → JPG",
+      "ok": true,
+      "detail": "photo1.jpg, photo2.jpg"
+    },
+    {
+      "name": "Convert JPG → PNG",
+      "ok": true,
+      "detail": "800×520"
+    },
+    {
+      "name": "Convert PNG → WebP",
+      "ok": true,
+      "detail": "18 KB"
+    },
+    {
+      "name": "Convert PNG → BMP (24-bit)",
+      "ok": true,
+      "detail": "800×520, 1219 KB"
+    },
+    {
+      "name": "Convert PNG → ICO",
+      "ok": true,
+      "detail": "6 PNG entries: 16/32/48/64/128/256px"
+    },
+    {
+      "name": "Convert images → PDF (auto page)",
+      "ok": true,
+      "detail": "2 pages, 600×390pt"
+    },
+    {
+      "name": "Convert images → PDF (A4 + 12mm margin)",
+      "ok": true,
+      "detail": "595.3×841.9pt"
+    },
+    {
+      "name": "Convert PDF → JPG (5 pages, max edge 1280)",
+      "ok": true,
+      "detail": "gamma-5p_p1.jpg, gamma-5p_p2.jpg, gamma-5p_p3.jpg, gamma-5p_p4.jpg, gamma-5p_p5.jpg"
+    },
+    {
+      "name": "Convert PDF → PNG (3 pages)",
+      "ok": true,
+      "detail": "alpha-3p_p1.png, alpha-3p_p2.png, alpha-3p_p3.png"
+    },
+    {
+      "name": "Extract PDF → TXT (5 pages)",
+      "ok": true,
+      "detail": "3084 chars, page markers present"
+    },
+    {
+      "name": "Convert CSV → JSON (headers + numeric coercion)",
+      "ok": true,
+      "detail": "{\"name\":\"Alice\",\"score\":95,\"active\":true}"
+    },
+    {
+      "name": "Convert JSON → CSV (BOM + header + rows)",
+      "ok": true,
+      "detail": "city,temp / 서울,21 / 부산,25"
+    },
+    {
+      "name": "Convert rejects wrong type & reports partial failures",
+      "ok": true,
+      "detail": "1개 파일은 변환하지 못했습니다. · broken.png — 이미지를 읽을 수 없습니다. 지원하지 않는 형식이거나 파일이 손상되었습니다."
+    }
+  ],
+  "problems": []
+}

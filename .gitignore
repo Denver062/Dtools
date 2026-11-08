@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-ssr/
+public/pdfjs/
+*.local
+.vite/
+.DS_Store
+Thumbs.db
+*.log
+tmp-*

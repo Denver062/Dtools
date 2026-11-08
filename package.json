@@ -1,0 +1,31 @@
+{
+  "name": "dtools",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Dtools — 브라우저에서 동작하는 로컬 파일 도구 (압축, PDF, 변환)",
+  "scripts": {
+    "predev": "node scripts/copy-pdfjs.mjs",
+    "dev": "vite",
+    "prebuild": "node scripts/copy-pdfjs.mjs",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --pretty"
+  },
+  "dependencies": {
+    "@zip.js/zip.js": "2.24.0",
+    "7z-wasm": "1.2.0",
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "6.5.438",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.1.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.2"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "results": [
+    {
+      "name": "Desktop home width",
+      "ok": true,
+      "detail": "1440/1440"
+    },
+    {
+      "name": "Theme toggle + persistence",
+      "ok": true,
+      "detail": "light"
+    },
+    {
+      "name": "Sidebar navigation + document title",
+      "ok": true,
+      "detail": "파일 변환 — Dtools"
+    },
+    {
+      "name": "Route /compress",
+      "ok": true,
+      "detail": "1440/1440"
+    },
+    {
+      "name": "Route /extract",
+      "ok": true,
+      "detail": "1440/1440"
+    },
+    {
+      "name": "Route /pdf/merge",
+      "ok": true,
+      "detail": "1440/1440"
+    },
+    {
+      "name": "Route /pdf/split",
+      "ok": true,
+      "detail": "1440/1440"
+    },
+    {
+      "name": "Route /pdf/compress",
+      "ok": true,
+      "detail": "1440/1440"
+    },
+    {
+      "name": "Route /convert",
+      "ok": true,
+      "detail": "1440/1440"
+    },
+    {
+      "name": "404 route",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Mobile layout (390px) + drawer",
+      "ok": true,
+      "detail": "no horizontal overflow"
+    },
+    {
+      "name": "Mobile layout at 360px across routes",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "problems": []
+}

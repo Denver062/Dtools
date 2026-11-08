@@ -1,0 +1,65 @@
+{
+  "results": [
+    {
+      "name": "ZIP create (AES-256, Korean paths, folder tree)",
+      "ok": true,
+      "detail": "4 entries, 520946 bytes"
+    },
+    {
+      "name": "ZIP wrong password rejected",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ZIP extract without password shows auth error",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ZIP extract + ZIP-all preserves paths",
+      "ok": true,
+      "detail": "4 files"
+    },
+    {
+      "name": "7Z create (AES-256 + header encryption, Korean paths)",
+      "ok": true,
+      "detail": "6 entries, 518832 bytes"
+    },
+    {
+      "name": "7Z wrong password rejected",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "7Z extract without password shows error",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "7Z extract",
+      "ok": true,
+      "detail": "4 files"
+    },
+    {
+      "name": "TAR.GZ extract via 7-Zip engine",
+      "ok": true,
+      "detail": "readme.txt, 메모.txt"
+    },
+    {
+      "name": "ZIP legacy ZipCrypto create/extract",
+      "ok": true,
+      "detail": "2 entries"
+    },
+    {
+      "name": "Password confirmation mismatch blocks archive",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "GZ extract keeps original file name + content",
+      "ok": true,
+      "detail": "안내문.txt"
+    }
+  ],
+  "problems": []
+}

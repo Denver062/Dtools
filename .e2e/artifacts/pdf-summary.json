@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "name": "PDF merge preserves page order & text",
+      "ok": true,
+      "detail": "5 pages, 3.6 KB"
+    },
+    {
+      "name": "PDF split by ranges (1-2, 4-)",
+      "ok": true,
+      "detail": "gamma-5p_1-2.pdf, gamma-5p_4-5.pdf → pages 2 + 2"
+    },
+    {
+      "name": "PDF split every 2 pages",
+      "ok": true,
+      "detail": "pages 2 + 2 + 1"
+    },
+    {
+      "name": "PDF compress lossless keeps text",
+      "ok": true,
+      "detail": "3.7 KB"
+    },
+    {
+      "name": "PDF compress balanced (raster pipeline)",
+      "ok": true,
+      "detail": "2031 KB → 2031 KB (original kept)"
+    },
+    {
+      "name": "PDF compress strong (raster pipeline)",
+      "ok": true,
+      "detail": "2031 KB → 1322 KB"
+    }
+  ],
+  "problems": []
+}

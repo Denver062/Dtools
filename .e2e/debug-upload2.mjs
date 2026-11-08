@@ -1,0 +1,23 @@
+import { chromium } from 'playwright'
+import path from 'node:path'
+const BASE = 'http://localhost:4317/'
+const browser = await chromium.launch()
+const page = await browser.newPage({ viewport: { width: 1440, height: 1100 } })
+page.on('console', (m) => console.log('console', m.type(), m.text()))
+page.on('pageerror', (e) => console.log('pageerror', e.message))
+await page.goto(BASE + '#/compress', { waitUntil: 'networkidle' })
+await page.waitForSelector('h1')
+await page.locator('.dropzone input[type=file]').first().setInputFiles([path.resolve('.e2e/fixtures/photo1.png'), path.resolve('.e2e/fixtures/photo2.jpg')])
+await page.waitForTimeout(1000)
+console.log('rows', await page.locator('.file-row').count())
+console.log('switch count', await page.getByRole('switch').count())
+console.log('switch visible', await page.getByRole('switch').first().isVisible().catch((e) => e.message))
+console.log('switch html', await page.locator('.switch-row').first().evaluate((el) => el.outerHTML).catch((e) => e.message))
+console.log('view', await page.evaluate(() => ({ h: document.body.scrollHeight, y: scrollY, theme: document.documentElement.dataset.theme })))
+const box = await page.locator('.switch-row').first().boundingBox().catch(() => null)
+console.log('box', box)
+await page.locator('.switch-row').first().click({ timeout: 5000 }).then(() => console.log('clicked switch-row')).catch((e) => console.log('switch-row click failed', e.message))
+await page.waitForTimeout(500)
+console.log('password inputs', await page.locator('input[aria-label="비밀번호"]').count())
+await page.screenshot({ path: '.e2e/artifacts/debug-upload2.png', fullPage: true })
+await browser.close()

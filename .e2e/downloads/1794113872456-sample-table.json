@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Alice",
+    "score": 95,
+    "active": true
+  },
+  {
+    "name": "Bob",
+    "score": 72,
+    "active": false
+  }
+]

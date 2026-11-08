@@ -1,0 +1,55 @@
+{
+  "results": [
+    {
+      "name": "Font + desktop top bar geometry",
+      "ok": true,
+      "detail": "64px top bar, font loaded"
+    },
+    {
+      "name": "dark theme contrast",
+      "ok": true,
+      "detail": "text/bg 16.8, text-dim/surface 8.2, text-faint/surface 5.8, text-faint/surface-2 5.4, text-faint/surface-3 4.8, text-faint/sidebar 6.1, accent-ink/accent 8.2"
+    },
+    {
+      "name": "light theme contrast",
+      "ok": true,
+      "detail": "text/bg 16.0, text-dim/surface 6.4, text-faint/surface 5.9, text-faint/surface-2 5.3, text-faint/surface-3 4.9, text-faint/sidebar 5.7, accent-ink/accent 5.4"
+    },
+    {
+      "name": "dark theme contrast",
+      "ok": true,
+      "detail": "text/bg 16.8, text-dim/surface 8.2, text-faint/surface 5.8, text-faint/surface-2 5.4, text-faint/surface-3 4.8, text-faint/sidebar 6.1, accent-ink/accent 8.2"
+    },
+    {
+      "name": "Toggle control (checkbox DOM, 36×20 track, accent when checked)",
+      "ok": true,
+      "detail": "rgb(35, 43, 61) → rgb(138, 178, 239)"
+    },
+    {
+      "name": "Advanced panel collapse/expand reveals level radiogroup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Segmented radiogroup (ARIA state + action label)",
+      "ok": true,
+      "detail": "7Z item 148×35"
+    },
+    {
+      "name": "Header-encryption toggle stays inside rail",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "All tool pages render expected key controls",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "No external network requests (fully local UI)",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "problems": []
+}
